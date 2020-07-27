@@ -1,7 +1,12 @@
-const puppeteer = require('puppeteer')
+import * as puppeteer from 'puppeteer'
+import * as cron from 'node-cron'
 
 export class Server {
-  constructor() {}
+  constructor() {
+    cron.schedule('* * * * *', () => {
+      console.log('running a task every minute')
+    })
+  }
 
   async app() {
     const browser = await puppeteer.launch()
